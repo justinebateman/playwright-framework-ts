@@ -2,6 +2,29 @@
 
 An automation framework for Playwright written in TypeScript  with common utils and tools for automated QA
 
+This framework includes:
+
+- Playwright base page object that can be extended from
+
+```
+class TestPage extends BasePage implements IPage {
+  readonly page: Page;
+
+  readonly url: string = "/your-url";
+
+  constructor(page: Page) {
+    super(page);
+    this.page = page;
+  }
+```
+The base page includes useful fluent waits and assertions
+
+- Browser helpers for local storage management
+- Element helpers with common fluent waits eg. waiting for an element to be visible, waiting for element text to equal expected, scrolling to an element etc.
+- Auth0 and AWS cognito token helpers eg. get access token from local storage or storage state file
+- General helpers for managing dates, currencies, strings etc.
+
+
 ## :wrench: Local Configuration
 
 In order to be able to install this package from the GitHub Package Repository you must configure your per-user `.npmrc` configuration file.

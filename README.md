@@ -4,7 +4,7 @@ An automation framework for Playwright written in TypeScript  with common utils 
 
 ## :wrench: Local Configuration
 
-In order to be able to install this package from the GitHub Package Repository you must obtain a personal access token from GitHub and configure your per-user `.npmrc` configuration file.
+In order to be able to install this package from the GitHub Package Repository you must configure your per-user `.npmrc` configuration file.
 
 - Locate the `$HOME/.npmrc` configuration file. If one doesn't exist, create it.
 - Add the following to the `.npmrc` configuration file:
@@ -14,7 +14,7 @@ In order to be able to install this package from the GitHub Package Repository y
 
 ```
 
-Installing the package via NPM:
+Installing the package via yarn:
 
 - Latest
 
@@ -37,7 +37,7 @@ yarn add @justinebateman/playwright-framework-ts@<version>
 
 ## :muscle: GitHub Actions Configuration
 
-When using this package as a dependency within a repository that runs GitHub Actions, the given action workflow will need to be configured in order to have access to the GitHub Package Registry @justinebateman scope.
+When using this package as a dependency within a repository that runs GitHub Actions, the given action workflow will need to be configured in order to have access to the GitHub Package Registry `@justinebateman` scope.
 
 You can do this in a few ways, here are two different options:
 

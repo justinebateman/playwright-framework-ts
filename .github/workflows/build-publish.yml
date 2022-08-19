@@ -23,7 +23,7 @@ jobs:
       - run: yarn run test
       - run: yarn publish --tag dev
         env:
-          NODE_AUTH_TOKEN: ${{ GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   build-publish-release:
     name: Build & Publish for Release
@@ -43,4 +43,4 @@ jobs:
       - run: yarn run test
       - run: yarn publish
         env:
-          NODE_AUTH_TOKEN: ${{ GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

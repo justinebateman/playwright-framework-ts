@@ -1,0 +1,46 @@
+name: Build & Publish to GPR
+on:
+  push:
+    branches: "**"
+
+jobs:
+  build-publish-dev:
+    name: Build & Publish for Development
+    if: github.ref != 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@justinebateman"
+          node-version: '14'
+      - run: yarn run set-dev-package-version
+      - run: yarn install
+      - run: yarn run lint
+      - run: yarn run build
+      - run: yarn playwright install
+      - run: yarn run test
+      - run: yarn publish --tag dev
+        env:
+          NODE_AUTH_TOKEN: ${{ GITHUB_TOKEN }}
+
+  build-publish-release:
+    name: Build & Publish for Release
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@justinebateman"
+          node-version: '14'
+      - run: yarn install
+      - run: yarn run lint
+      - run: yarn run build
+      - run: yarn playwright install
+      - run: yarn run test
+      - run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{ GITHUB_TOKEN }}

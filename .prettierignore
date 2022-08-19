@@ -1,0 +1,11 @@
+build
+lib
+.npmrc
+.vscode
+.idea
+
+.gitignore
+/test-results
+playwright-report
+allure-report
+allure-results
